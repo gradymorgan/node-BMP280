@@ -4,17 +4,22 @@
 ## Installation
 
 ```sh
-$ npm install --save bmp-280
+$ npm install --save node-bmp280
 ```
 
 ## Usage
 
 ```js
-var BMP280 = require('bmp-280');
+var BMP280 = require('node-bmp280');
 
 var barometer = new BMP280();
 
-barometer.begin(function() {
+barometer.begin(function(err) {
+	if (err) {
+		console.info('error initializing barometer', err);
+		return;
+	}
+
     console.info('barometer running');
 
     setInterval(function() {

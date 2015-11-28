@@ -1,6 +1,6 @@
 {
   "name": "node-bmp280",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "description": "Node library for the Bosch Sensortec BMP-280 Barometric Pressure Sensor.",
   "main": "BMP280.js",
   "repository": {
