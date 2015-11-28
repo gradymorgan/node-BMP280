@@ -1,0 +1,31 @@
+{
+  "name": "node-bmp280",
+  "version": "0.0.1",
+  "description": "Node library for the Bosch Sensortec BMP-280 Barometric Pressure Sensor.",
+  "main": "BMP280.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/landlessness/node-BNO055.git"
+  },
+  "keywords": [
+    "node",
+    "i2c"
+  ],
+  "author": "Grady",
+  "license": "ISC",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "dependencies": {
+    "i2c": "^0.2.1"
+  },
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "gulp": "^3.9.0",
+    "gulp-jshint": "^2.0.0",
+    "gulp-mocha": "^2.2.0",
+    "jshint": "^2.8.0",
+    "mocha": "^2.3.4"
+  }
+}
