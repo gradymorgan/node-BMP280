@@ -7,8 +7,7 @@
     "type": "git",
     "url": "git+https://github.com/gradymorgan/node-BMP280.git"
   },
-  "keywords": [
-  ],
+  "keywords": [],
   "author": "Grady Morgan",
   "license": "MIT",
   "bugs": {
@@ -21,6 +20,7 @@
   "devDependencies": {
     "chai": "^3.4.1",
     "gulp": "^3.9.0",
+    "gulp-exclude-gitignore": "^1.0.0",
     "gulp-jshint": "^2.0.0",
     "gulp-mocha": "^2.2.0",
     "gulp-plumber": "^1.0.0",

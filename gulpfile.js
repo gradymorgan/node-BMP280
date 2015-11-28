@@ -1,7 +1,7 @@
 var path = require('path');
 var gulp = require('gulp');
 var mocha = require('gulp-mocha');
-
+var excludeGitignore = require('gulp-exclude-gitignore');
 var plumber = require('gulp-plumber');
 var jshint = require('gulp-jshint');
 
@@ -13,7 +13,7 @@ gulp.task('static', function () {
     .pipe(jshint.reporter('fail'));
 });
 
-gulp.task('test', ['pre-test'], function (cb) {
+gulp.task('test', function (cb) {
   var mochaErr;
 
   gulp.src('test/**/*.js')
@@ -28,3 +28,5 @@ gulp.task('test', ['pre-test'], function (cb) {
 });
 
 gulp.task('publish', function(){});
+
+gulp.task('default', ['static', 'test']);
