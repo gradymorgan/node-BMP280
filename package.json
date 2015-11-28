@@ -5,18 +5,16 @@
   "main": "BMP280.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/landlessness/node-BNO055.git"
+    "url": "git+https://github.com/gradymorgan/node-BMP280.git"
   },
   "keywords": [
-    "node",
-    "i2c"
   ],
-  "author": "Grady",
-  "license": "ISC",
+  "author": "Grady Morgan",
+  "license": "MIT",
   "bugs": {
-    "url": ""
+    "url": "https://github.com/gradymorgan/node-BMP280/issues"
   },
-  "homepage": "",
+  "homepage": "https://github.com/gradymorgan/node-BMP280/readme",
   "dependencies": {
     "i2c": "^0.2.1"
   },
@@ -25,6 +23,7 @@
     "gulp": "^3.9.0",
     "gulp-jshint": "^2.0.0",
     "gulp-mocha": "^2.2.0",
+    "gulp-plumber": "^1.0.0",
     "jshint": "^2.8.0",
     "mocha": "^2.3.4"
   }
