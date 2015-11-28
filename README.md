@@ -10,9 +10,19 @@ $ npm install --save bmp-280
 ## Usage
 
 ```js
-var bmp280 = require('bmp-280');
+var BMP280 = require('bmp-280');
 
-bmp280('Rainbow');
+var barometer = new BMP280();
+
+barometer.begin(function() {
+    console.info('barometer running');
+
+    setInterval(function() {
+        barometer.readPressureAndTemparature(function(err, pressure, temperature) {
+            console.info('barometer: ', pressure, temperature);
+        });
+    }, 1000);
+});
 ```
 ## License
 

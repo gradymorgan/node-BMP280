@@ -14,16 +14,16 @@ var BMP280 = function(options) {
     this.wire = new i2c(address, options);
 };
 
-BMP280.prototype.startup = function(callback) {
+BMP280.prototype.begin = function(callback) {
     var sensor = this;
     
     this.wire.readBytes(BMP280.REGISTER_CHIPID, 1, function(err, buffer) {
         if ( err ) 
             callback(err);
         else if (buffer[0] != BMP280.CHIP_ID) 
-            callback(10); //TODO: real error
+            callback(new Error("Chip ID failed, returned " + buffer[0]));
         else
-            readCoefficients(function(cal) {
+            readCoefficients(function(err, cal) {
                 sensor.calibration = cal;
             
                 sensor.wire.writeBytes(BMP280.REGISTER_CONTROL, [0x3F], function(err) {
@@ -95,7 +95,7 @@ BMP280.prototype.readCoefficients = function(callback) {
             dig_P9: int16( buffer[23], buffer[22] )
         };
 
-        callback(calibration);
+        callback(err, calibration);
     });
 };
 
@@ -107,9 +107,11 @@ BMP280.prototype.readPressureAndTemparature = function(callback) {
         var rawPressure = uint20(buffer[0], buffer[1], buffer[2]);
         var rawTemp = uint20(buffer[3], buffer[4], buffer[5]);
 
-        var temperature, t_fine = compensateTemperature(rawTemp, calibration);
-        var pressure = compensatePressure(rawPressure, temp, calibration);
-        callback(pressure, temperature);
+        var t_fine = compensateTemperature(rawTemp, calibration);
+        var pressure = compensatePressure(rawPressure, t_fine, calibration);
+        var temperature = compensateTemperature2(t_fine, calibration);
+        
+        callback(null, pressure, temperature);
     });
 };
 
